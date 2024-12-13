@@ -164,13 +164,10 @@ body {
 
 /* Sección de contacto */
 .contact {
-    height: 230px; /* Altura fija de 230 píxeles */
-    padding: 0; /* Elimina el relleno interno */
-    overflow: hidden; /* Asegúrate de que el contenido que exceda la altura no sea visible */
+    padding: 4rem 2rem;
     text-align: center;
     background: rgba(0, 0, 0, 0.9);
 }
-
 
 /* Título de la sección de contacto */
 .contact h2 {
@@ -182,7 +179,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 5px; /* Separación de 50px entre los elementos */
+    gap: 10px; /* Separación de 10px entre los elementos */
     margin-top: 15px; /* Separación de 15px entre la sección de contacto y los enlaces */
 }
 
