@@ -1,6 +1,11 @@
-// Función para redirigir a la página de activaciones
-function redireccion() {
+// Función para redirigir a la página de Activaciones
+function redirigirActivaciones() {
     location.href = "listadeactivaciones.html";
+}
+
+// Función para redirigir a la página de Créditos
+function redirigirCreditos() {
+    location.href = "listadecreditos.html";
 }
 
 // Detecta el scroll para ocultar y mostrar el encabezado
@@ -24,15 +29,4 @@ window.addEventListener("scroll", function() {
 
     // Actualiza la última posición del scroll
     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-});
-
-// Función para redirigir a la página de créditos 
-function redireccion() {
-    location.href = "listadecreditos.html";
-}
-document.addEventListener("DOMContentLoaded", () => {
-    const buttons = document.querySelectorAll(".btn-buy");
-    buttons.forEach(button => {
-        button.setAttribute("target", "_blank");
-    });
 });
