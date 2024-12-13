@@ -4,6 +4,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
@@ -26,20 +27,28 @@ body {
 @keyframes gradientAnimation {
     0% { background: linear-gradient(120deg, #1e1e1e, #121212); }
     50% { background: linear-gradient(120deg, #4a00e0, #8e2de2); }
-    100% { background: linear-gradient(120deg, #ff512f, #dd2476); }
+    100% { background: linear-gradient(120deg, #565c55, #e761e1); }
 }
 
-/* Encabezado */
+/* Estilo para el encabezado */
 .header {
     background: rgba(0, 0, 0, 0.8);
     padding: 1rem 2rem;
     position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: top 0.3s ease; /* Suaviza el movimiento del encabezado */
+}
+
+/* Efecto para ocultar el encabezado */
+.header.hidden {
+    top: -80px; /* Mueve el encabezado fuera de la vista */
 }
 
 .logo {
@@ -151,4 +160,87 @@ body {
 @keyframes iconBounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
-}  
+}
+
+/* Sección de contacto */
+.contact {
+    height: 230px; /* Altura fija de 230 píxeles */
+    padding: 0; /* Elimina el relleno interno */
+    overflow: hidden; /* Asegúrate de que el contenido que exceda la altura no sea visible */
+    text-align: center;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+
+/* Título de la sección de contacto */
+.contact h2 {
+    margin-bottom: 15px; /* Separación de 15px entre el título y los enlaces */
+}
+
+/* Sección de enlaces de contacto */
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px; /* Separación de 50px entre los elementos */
+    margin-top: 15px; /* Separación de 15px entre la sección de contacto y los enlaces */
+}
+
+.contact-links a {
+    display: inline-block;
+    font-size: 20px; /* Tamaño del texto cambiado a 20px */
+    color: #fff;
+    text-decoration: none;
+    position: relative;
+    padding-left: 30px;
+    padding-right: 10px;
+    transition: color 0.3s;
+    font-weight: bold;
+}
+
+.contact-links a::before {
+    content: "· "; /* Punto antes del texto */
+    font-size: 25px; /* Tamaño del punto */
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #00d4ff;
+}
+
+.contact-links a:hover {
+    color: #00d4ff;
+    text-decoration: underline;
+}
+
+/* Iconos de los botones de contacto */
+.contact-links a.whatsapp::before {
+    content: "💬 "; /* Icono de WhatsApp */
+}
+
+.contact-links a.whatsapp:hover {
+    color: #25D366; /* Color de WhatsApp */
+}
+
+.contact-links a.group::before {
+    content: "👥 "; /* Icono de grupo */
+}
+
+.contact-links a.group:hover {
+    color: #25D366; /* Color de WhatsApp */
+}
+
+.contact-links a.telegram::before {
+    content: "📱 "; /* Icono de Telegram */
+}
+
+.contact-links a.telegram:hover {
+    color: #0088cc; /* Color de Telegram */
+}
+
+.contact-links a.instagram::before {
+    content: "📸 "; /* Icono de Instagram */
+}
+
+.contact-links a.instagram:hover {
+    color: #e1306c; /* Color de Instagram */
+}
