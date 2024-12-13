@@ -10,7 +10,6 @@ body {
     line-height: 1.6;
     color: #fff;
     overflow-x: hidden;
-    background-color: #121212;
 }
 
 /* Fondo animado */
@@ -44,6 +43,12 @@ body {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: top 0.3s ease; /* Suaviza el movimiento del encabezado */
+}
+
+/* Efecto para ocultar el encabezado */
+.header.hidden {
+    top: -80px; /* Mueve el encabezado fuera de la vista */
 }
 
 .logo {
@@ -159,87 +164,41 @@ body {
 
 /* Sección de contacto */
 .contact {
-    padding: 2rem;
+    height: 180px; /* Altura fija de 180 píxeles */
+    padding: 0; /* Elimina el relleno interno */
+    overflow: hidden; /* Oculta el contenido que exceda la altura */
     text-align: center;
     background: rgba(0, 0, 0, 0.9);
-}
-
-.contact h2 {
-    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .contact-links {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* Separación entre los enlaces */
 }
 
 .contact-links a {
     display: inline-block;
-    font-size: 20px;
+    font-size: 16px; /* Tamaño ajustado para caber en la altura */
     color: #fff;
     text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    background: rgba(255, 255, 255, 0.1);
-    transition: all 0.3s;
+    padding: 0 5px;
+    transition: color 0.3s;
 }
 
 .contact-links a:hover {
-    background: #00d4ff;
-    color: #000;
+    color: #00d4ff;
 }
 
 /* Pie de página */
 .footer {
-    padding: 1rem;
     text-align: center;
-    background: #000;
+    padding: 1rem 0;
+    background: #111;
     color: #fff;
-}
-
-/* Media Queries para dispositivos pequeños */
-@media (max-width: 768px) {
-    .hero h2 {
-        font-size: 2rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
-
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .header {
-        flex-direction: column;
-        padding: 1rem;
-    }
-
-    .nav ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-}
-
-/* Media Queries para dispositivos grandes */
-@media (min-width: 1200px) {
-    .hero h2 {
-        font-size: 4rem;
-    }
-
-    .hero p {
-        font-size: 1.5rem;
-    }
-
-    .services {
-        padding: 6rem 3rem;
-    }
-
-    .contact {
-        padding: 4rem;
-    }
+    font-size: 0.9rem;
 }

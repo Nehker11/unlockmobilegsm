@@ -1,12 +1,13 @@
 // Función para redirigir a la página de Activaciones
 function redirigirActivaciones() {
-    location.href = "listadeactivaciones.html";
+    window.location.href = "listadeactivaciones.html";  // Asegúrate de que el archivo 'listadeactivaciones.html' esté en la misma carpeta
 }
 
 // Función para redirigir a la página de Créditos
 function redirigirCreditos() {
-    location.href = "listadecreditos.html";
+    window.location.href = "listadecreditos.html";  // Asegúrate de que el archivo 'listadecreditos.html' esté en la misma carpeta
 }
+
 
 // Detecta el scroll para ocultar y mostrar el encabezado
 let lastScrollTop = 0;  // Variable para almacenar la última posición del scroll
@@ -29,4 +30,11 @@ window.addEventListener("scroll", function() {
 
     // Actualiza la última posición del scroll
     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll(".btn-buy");
+    buttons.forEach(button => {
+        button.setAttribute("target", "_blank");
+    });
 });
