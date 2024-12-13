@@ -26,7 +26,7 @@ window.addEventListener("scroll", function() {
     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 });
 
-// Función para redirigir a la página de activaciones
+// Función para redirigir a la página de créditos 
 function redireccion() {
     location.href = "listadecreditos.html";
 }
