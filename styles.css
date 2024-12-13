@@ -10,6 +10,7 @@ body {
     line-height: 1.6;
     color: #fff;
     overflow-x: hidden;
+    background-color: #121212;
 }
 
 /* Fondo animado */
@@ -43,12 +44,6 @@ body {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: top 0.3s ease; /* Suaviza el movimiento del encabezado */
-}
-
-/* Efecto para ocultar el encabezado */
-.header.hidden {
-    top: -80px; /* Mueve el encabezado fuera de la vista */
 }
 
 .logo {
@@ -164,80 +159,87 @@ body {
 
 /* Sección de contacto */
 .contact {
-    padding: 4rem 2rem;
+    padding: 2rem;
     text-align: center;
     background: rgba(0, 0, 0, 0.9);
 }
 
-/* Título de la sección de contacto */
 .contact h2 {
-    margin-bottom: 15px; /* Separación de 15px entre el título y los enlaces */
+    margin-bottom: 15px;
 }
 
-/* Sección de enlaces de contacto */
 .contact-links {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 10px; /* Separación de 10px entre los elementos */
-    margin-top: 15px; /* Separación de 15px entre la sección de contacto y los enlaces */
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
 }
 
 .contact-links a {
     display: inline-block;
-    font-size: 20px; /* Tamaño del texto cambiado a 20px */
+    font-size: 20px;
     color: #fff;
     text-decoration: none;
-    position: relative;
-    padding-left: 30px;
-    padding-right: 10px;
-    transition: color 0.3s;
-    font-weight: bold;
-}
-
-.contact-links a::before {
-    content: "· "; /* Punto antes del texto */
-    font-size: 25px; /* Tamaño del punto */
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: #00d4ff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
 }
 
 .contact-links a:hover {
-    color: #00d4ff;
-    text-decoration: underline;
+    background: #00d4ff;
+    color: #000;
 }
 
-/* Iconos de los botones de contacto */
-.contact-links a.whatsapp::before {
-    content: "💬 "; /* Icono de WhatsApp */
+/* Pie de página */
+.footer {
+    padding: 1rem;
+    text-align: center;
+    background: #000;
+    color: #fff;
 }
 
-.contact-links a.whatsapp:hover {
-    color: #25D366; /* Color de WhatsApp */
+/* Media Queries para dispositivos pequeños */
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .header {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
 }
 
-.contact-links a.group::before {
-    content: "👥 "; /* Icono de grupo */
-}
+/* Media Queries para dispositivos grandes */
+@media (min-width: 1200px) {
+    .hero h2 {
+        font-size: 4rem;
+    }
 
-.contact-links a.group:hover {
-    color: #25D366; /* Color de WhatsApp */
-}
+    .hero p {
+        font-size: 1.5rem;
+    }
 
-.contact-links a.telegram::before {
-    content: "📱 "; /* Icono de Telegram */
-}
+    .services {
+        padding: 6rem 3rem;
+    }
 
-.contact-links a.telegram:hover {
-    color: #0088cc; /* Color de Telegram */
-}
-
-.contact-links a.instagram::before {
-    content: "📸 "; /* Icono de Instagram */
-}
-
-.contact-links a.instagram:hover {
-    color: #e1306c; /* Color de Instagram */
+    .contact {
+        padding: 4rem;
+    }
 }
