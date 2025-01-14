@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->execute(['nombre' => $nombre, 'correo' => $correo, 'clave' => $clave]);
                 
                 // Redirigir al formulario de inicio de sesión
-                header("Location: login.html");
+                header("Location: index.html");
                 exit(); // Detener la ejecución después de la redirección
             } catch (PDOException $e) {
                 // En caso de error

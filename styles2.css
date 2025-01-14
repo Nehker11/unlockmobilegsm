@@ -12,6 +12,65 @@ body {
     overflow-x: hidden;
 }
 
+/* Ajustes generales del menú desplegable */
+.dropdown {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    display: inline-block;
+    z-index: 1000;
+}
+
+.dropbtn {
+    background: #1594adda;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.dropbtn:hover {
+    background: #1e90ff;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: #333;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.dropdown-content a {
+    color: #fff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    display: block;
+    transition: background 0.3s;
+    border-radius: 5px;
+}
+
+.dropdown-content a:hover {
+    background: #444;
+}
+
+.dropdown-content p.username {
+    margin-bottom: 0.5rem;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
 /* Fondo animado */
 .background {
     position: fixed;
