@@ -1,263 +1,130 @@
-/* Configuración básica */
+/* Configuración general */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Fondo de la página */
 body {
     font-family: 'Arial', sans-serif;
-    line-height: 1.6;
+    background: linear-gradient(135deg, #6e7f9d, #4e5d77);
     color: #fff;
-    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: cover;
+    overflow: hidden;
 }
 
-/* Ajustes generales del menú desplegable */
-.dropdown {
-    position: absolute;
-    top: 1.5rem;
-    right: 2rem;
-    display: inline-block;
-    z-index: 1000;
+/* Contenedor del formulario */
+.form-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1s ease-in-out;
 }
 
-.dropbtn {
-    background: #1594adda;
+/* Animación de entrada */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Títulos */
+h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
     color: #fff;
-    padding: 0.5rem 1rem;
-    font-size: 16px;
+    text-transform: uppercase;
+}
+
+/* Estilo de los campos del formulario */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 30px;
+    border: 1px solid #fff;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Efecto cuando el campo es seleccionado */
+input:focus {
+    border: 1px solid #00d4ff;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Estilo del botón */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #00d4ff;
+    color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 30px;
+    font-size: 1.1rem;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background 0.3s ease;
 }
 
-.dropbtn:hover {
+button:hover {
     background: #1e90ff;
 }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0;
-    background: #333;
-    min-width: 200px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    z-index: 1000;
-    padding: 1rem;
-}
-
-.dropdown-content a {
-    color: #fff;
-    padding: 0.5rem 1rem;
-    text-decoration: none;
-    display: block;
-    transition: background 0.3s;
-    border-radius: 5px;
-}
-
-.dropdown-content a:hover {
-    background: #444;
-}
-
-.dropdown-content p.username {
-    margin-bottom: 0.5rem;
-    font-size: 14px;
-    color: #aaa;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* Fondo animado */
-.background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(120deg, #1e1e1e, #121212);
-    animation: gradientAnimation 10s infinite alternate;
-    z-index: -1;
-}
-
-@keyframes gradientAnimation {
-    0% { background: linear-gradient(120deg, #1e1e1e, #121212); }
-    50% { background: linear-gradient(120deg, #4a00e0, #8e2de2); }
-    100% { background: linear-gradient(120deg, #565c55, #e761e1); }
-}
-
-/* Estilo para el encabezado */
+/* Estilo del header */
 .header {
-    background: rgba(0, 0, 0, 0.8);
-    padding: 1rem 2rem;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: top 0.3s ease; /* Suaviza el movimiento del encabezado */
-}
-
-/* Efecto para ocultar el encabezado */
-.header.hidden {
-    top: -80px; /* Mueve el encabezado fuera de la vista */
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+    position: absolute;
+    top: 20px;
+    left: 20px;
     color: #fff;
 }
 
+/* Estilo del menú de navegación */
 .nav ul {
     display: flex;
     list-style: none;
+    margin: 0;
 }
 
 .nav ul li {
-    margin-left: 1.5rem;
+    margin-right: 20px;
 }
 
 .nav ul li a {
     text-decoration: none;
     color: #fff;
-    transition: color 0.3s;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
 }
 
 .nav ul li a:hover {
     color: #00d4ff;
 }
 
-/* Hero */
-.hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: 100vh;
-    padding: 0 2rem;
-}
+/* Media Queries para dispositivos pequeños */
+@media (max-width: 600px) {
+    .form-container {
+        padding: 15px;
+        width: 90%;
+    }
 
-.hero h2 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    background: linear-gradient(90deg, #ff512f, #dd2476);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: textGlow 1.5s infinite alternate;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    color: #ddd;
-}
-
-.hero .btn {
-    background: #00d4ff;
-    padding: 0.8rem 2rem;
-    text-decoration: none;
-    color: #fff;
-    border-radius: 30px;
-    transition: transform 0.3s;
-}
-
-.hero .btn:hover {
-    transform: scale(1.1);
-    background: #1e90ff;
-}
-
-@keyframes textGlow {
-    0% { text-shadow: 0 0 5px #ff512f, 0 0 10px #dd2476; }
-    100% { text-shadow: 0 0 20px #ff512f, 0 0 30px #dd2476; }
-}
-
-/* Servicios */
-.services {
-    padding: 4rem 2rem;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.9);
-}
-
-.section-title {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-}
-
-.service {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 2rem;
-    border-radius: 10px;
-    transition: transform 0.3s;
-    text-align: center;
-}
-
-.service:hover {
-    transform: scale(1.1);
-    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
-}
-
-.service .icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    animation: iconBounce 1.5s infinite;
-}
-
-@keyframes iconBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-/* Sección de contacto */
-.contact {
-    height: 180px; /* Altura fija de 180 píxeles */
-    padding: 0; /* Elimina el relleno interno */
-    overflow: hidden; /* Oculta el contenido que exceda la altura */
-    text-align: center;
-    background: rgba(0, 0, 0, 0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.contact-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px; /* Separación entre los enlaces */
-}
-
-.contact-links a {
-    display: inline-block;
-    font-size: 16px; /* Tamaño ajustado para caber en la altura */
-    color: #fff;
-    text-decoration: none;
-    padding: 0 5px;
-    transition: color 0.3s;
-}
-
-.contact-links a:hover {
-    color: #00d4ff;
-}
-
-/* Pie de página */
-.footer {
-    text-align: center;
-    padding: 1rem 0;
-    background: #111;
-    color: #fff;
-    font-size: 0.9rem;
+    h2 {
+        font-size: 1.6rem;
+    }
 }

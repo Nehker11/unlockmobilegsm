@@ -1,0 +1,163 @@
+/* Configuración básica */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* Fondo animado */
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, #1e1e1e, #121212);
+    animation: gradientAnimation 10s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes gradientAnimation {
+    0% { background: linear-gradient(120deg, #1e1e1e, #121212); }
+    50% { background: linear-gradient(120deg, #4a00e0, #8e2de2); }
+    100% { background: linear-gradient(120deg, #565c55, #e761e1); }
+}
+
+/* Encabezado */
+.header {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: top 0.3s ease;
+}
+
+/* Estilo para la barra de navegación */
+.nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.nav ul li {
+    margin-left: 1.5rem;
+}
+
+.nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s;
+}
+
+.nav ul li a:hover {
+    color: #00d4ff;
+}
+
+/* Ocultar el encabezado cuando el scroll sea hacia abajo */
+.header.hidden {
+    top: -80px;
+}
+
+/* Estilo 3D profesional para el título */
+.activaciones-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 4rem;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    position: relative;
+    padding: 10px;
+    background: linear-gradient(45deg, #ff00f7, #00d4ff, #7a00ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: glowingText 1.5s ease-in-out infinite alternate, rotate3D 4s ease-in-out infinite;
+    margin-top: 45px; /* Agregado margen superior de 45px */
+}
+
+/* Animaciones para el texto */
+@keyframes glowingText {
+    0% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(0, 214, 255, 0.8); }
+    50% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 0 0 30px rgba(0, 214, 255, 1); }
+    100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(0, 214, 255, 0.8); }
+}
+
+@keyframes rotate3D {
+    0% { transform: rotateY(0deg) rotateX(0deg); }
+    25% { transform: rotateY(10deg) rotateX(10deg); }
+    50% { transform: rotateY(0deg) rotateX(0deg); }
+    75% { transform: rotateY(-10deg) rotateX(-10deg); }
+    100% { transform: rotateY(0deg) rotateX(0deg); }
+}
+
+/* Productos y diseño de la lista */
+.price-list {
+    padding: 4rem 2rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+.product-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(255, 255, 255, 0.2);
+}
+
+.product-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.product-card p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #ddd;
+}
+
+/* Botones "Comprar" */
+.btn-buy {
+    display: inline-block; /* Evita que se parezca a un enlace */
+    background: #007bff; /* Azul vibrante */
+    color: #fff;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 30px;
+    text-align: center;
+    text-decoration: none; /* Elimina el subrayado */
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.btn-buy:hover {
+    background: #0056b3; /* Azul más oscuro al pasar el ratón */
+    transform: scale(1.1);
+}

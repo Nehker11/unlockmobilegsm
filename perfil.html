@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="styles2.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">UNLOCK MOBILE GSM</h1>
+            <nav class="nav">
+                <ul>
+                    <li><a href="paginaPrincipal.html">Inicio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="perfil-container">
+        <div class="perfil-box">
+            <h2>Mi Perfil</h2>
+            <p><strong>Nombre:</strong> <span id="perfilNombre"></span></p>
+            <p><strong>Correo electrónico:</strong> <span id="perfilEmail"></span></p>
+            <button onclick="editarPerfil()" class="btn">Editar Perfil</button>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const nombre = localStorage.getItem("nombre");
+            const email = localStorage.getItem("email");
+
+            document.getElementById("perfilNombre").textContent = nombre;
+            document.getElementById("perfilEmail").textContent = email;
+        });
+
+        function editarPerfil() {
+            const nuevoNombre = prompt("Introduce tu nuevo nombre:");
+            const nuevoEmail = prompt("Introduce tu nuevo correo electrónico:");
+
+            if (nuevoNombre && nuevoEmail) {
+                localStorage.setItem("nombre", nuevoNombre);
+                localStorage.setItem("email", nuevoEmail);
+                document.getElementById("perfilNombre").textContent = nuevoNombre;
+                document.getElementById("perfilEmail").textContent = nuevoEmail;
+                alert("Perfil actualizado");
+            }
+        }
+    </script>
+</body>
+</html>
