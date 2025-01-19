@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil</title>
-    <link rel="stylesheet" href="styles2.css">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="stylos4.css">
+</head>
 </head>
 <body>
     <header class="header">
@@ -18,35 +19,125 @@
         </div>
     </header>
 
-    <section class="perfil-container">
-        <div class="perfil-box">
-            <h2>Mi Perfil</h2>
-            <p><strong>Nombre:</strong> <span id="perfilNombre"></span></p>
-            <p><strong>Correo electrónico:</strong> <span id="perfilEmail"></span></p>
-            <button onclick="editarPerfil()" class="btn">Editar Perfil</button>
-        </div>
-    </section>
+    <!-- Información del Perfil -->
+    <p><strong>Nombre de usuario:</strong> <span id="perfilUsuario"></span></p>
+    <p><strong>Correo electrónico:</strong> <span id="perfilEmail"></span></p>
+    <p><strong>Contraseña:</strong> <span id="perfilPassword"></span></p>
+    <p><strong>País:</strong> <span id="perfilPais"></span></p>
+    <p><strong>Ciudad:</strong> <span id="perfilCiudad"></span></p>
+    <p><strong>Número de teléfono:</strong> <span id="perfilTelefono"></span></p>
+
+    <!-- Botón para editar -->
+    <button onclick="activarEdicion()">Editar perfil</button>
+
+    <!-- Formulario de edición, inicialmente oculto -->
+    <div id="formularioEdicion" style="display:none;">
+        <h2>Editar Información</h2>
+        <form id="formEditar">
+            <label for="usuarioEdit">Nombre de usuario:</label>
+            <input type="text" id="usuarioEdit" required>
+
+            <label for="emailEdit">Correo electrónico:</label>
+            <input type="email" id="emailEdit" required>
+
+            <label for="passwordEdit">Contraseña:</label>
+            <input type="password" id="passwordEdit" required>
+
+            <label for="paisEdit">País:</label>
+            <input type="text" id="paisEdit" required>
+
+            <label for="ciudadEdit">Ciudad:</label>
+            <input type="text" id="ciudadEdit" required>
+
+            <label for="telefonoEdit">Número de teléfono (10 dígitos):</label>
+            <input type="text" id="telefonoEdit" pattern="[0-9]{10}" required>
+
+            <button type="submit" onclick="guardarCambios(event)">Guardar Cambios</button>
+        </form>
+    </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const nombre = localStorage.getItem("nombre");
-            const email = localStorage.getItem("email");
+        // Función para mostrar la información en el perfil
+        window.onload = function() {
+            const usuario = localStorage.getItem('usuario');
+            const email = localStorage.getItem('email');
+            const password = localStorage.getItem('password');
+            const pais = localStorage.getItem('pais');
+            const ciudad = localStorage.getItem('ciudad');
+            const telefono = localStorage.getItem('telefono');
 
-            document.getElementById("perfilNombre").textContent = nombre;
-            document.getElementById("perfilEmail").textContent = email;
-        });
+            // Asignar los datos al perfil
+            document.getElementById('perfilUsuario').textContent = usuario;
+            document.getElementById('perfilEmail').textContent = email;
+            document.getElementById('perfilPassword').textContent = password;
+            document.getElementById('perfilPais').textContent = pais;
+            document.getElementById('perfilCiudad').textContent = ciudad;
+            document.getElementById('perfilTelefono').textContent = telefono;
+        }
 
-        function editarPerfil() {
-            const nuevoNombre = prompt("Introduce tu nuevo nombre:");
-            const nuevoEmail = prompt("Introduce tu nuevo correo electrónico:");
+        // Función para activar el formulario de edición
+        function activarEdicion() {
+            // Mostrar el formulario de edición
+            document.getElementById('formularioEdicion').style.display = 'block';
 
-            if (nuevoNombre && nuevoEmail) {
-                localStorage.setItem("nombre", nuevoNombre);
-                localStorage.setItem("email", nuevoEmail);
-                document.getElementById("perfilNombre").textContent = nuevoNombre;
-                document.getElementById("perfilEmail").textContent = nuevoEmail;
-                alert("Perfil actualizado");
-            }
+            // Rellenar el formulario con los datos actuales del perfil
+            document.getElementById('usuarioEdit').value = localStorage.getItem('usuario');
+            document.getElementById('emailEdit').value = localStorage.getItem('email');
+            document.getElementById('passwordEdit').value = localStorage.getItem('password');
+            document.getElementById('paisEdit').value = localStorage.getItem('pais');
+            document.getElementById('ciudadEdit').value = localStorage.getItem('ciudad');
+            document.getElementById('telefonoEdit').value = localStorage.getItem('telefono');
+        }
+
+        // Función para guardar los cambios en localStorage
+        function guardarCambios(event) {
+            event.preventDefault(); // Evita el comportamiento por defecto del formulario (recargar la página)
+
+            // Obtener los valores del formulario de edición
+            const usuarioEdit = document.getElementById('usuarioEdit').value;
+            const emailEdit = document.getElementById('emailEdit').value;
+            const passwordEdit = document.getElementById('passwordEdit').value;
+            const paisEdit = document.getElementById('paisEdit').value;
+            const ciudadEdit = document.getElementById('ciudadEdit').value;
+            const telefonoEdit = document.getElementById('telefonoEdit').value;
+
+            // Almacenar los nuevos datos en localStorage
+            localStorage.setItem('usuario', usuarioEdit);
+            localStorage.setItem('email', emailEdit);
+            localStorage.setItem('password', passwordEdit);
+            localStorage.setItem('pais', paisEdit);
+            localStorage.setItem('ciudad', ciudadEdit);
+            localStorage.setItem('telefono', telefonoEdit);
+
+            // Actualizar la información mostrada en el perfil
+            document.getElementById('perfilUsuario').textContent = usuarioEdit;
+            document.getElementById('perfilEmail').textContent = emailEdit;
+            document.getElementById('perfilPassword').textContent = passwordEdit;
+            document.getElementById('perfilPais').textContent = paisEdit;
+            document.getElementById('perfilCiudad').textContent = ciudadEdit;
+            document.getElementById('perfilTelefono').textContent = telefonoEdit;
+
+            // Ocultar el formulario de edición
+            document.getElementById('formularioEdicion').style.display = 'none';
+        }
+
+        // Función para cerrar sesión
+        function cerrarSesion() {
+            // Elimina los datos de sesión (usuario logueado)
+            localStorage.removeItem('loggedIn');
+            localStorage.removeItem('currentUser');
+            localStorage.removeItem('usuario');
+            localStorage.removeItem('email');
+            localStorage.removeItem('password');
+            localStorage.removeItem('pais');
+            localStorage.removeItem('ciudad');
+            localStorage.removeItem('telefono');
+
+            // Muestra el mensaje de despedida
+            alert("Gracias por su visita, ¡vuelva pronto!");
+
+            // Redirige al inicio (index.html)
+            window.location.href = "index.html";
         }
     </script>
 </body>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Usuario</title>
-    <link rel="stylesheet" href="styles2.css">
+    <link rel="stylesheet" href="styles3.css">
 </head>
 <body>
     <header class="header">
@@ -19,42 +19,53 @@
         </div>
     </header>
 
-    <section class="form-container">
-        <div class="form-box">
-            <h2>Regístrate</h2>
-            <form id="registroForm">
-                <input type="text" id="usuario" placeholder="Nombre de usuario" required>
-                <input type="email" id="email" placeholder="Correo electrónico" required>
-                <input type="password" id="password" placeholder="Contraseña" required>
-                <input type="text" id="pais" placeholder="País" required>
-                <input type="text" id="ciudad" placeholder="Ciudad" required>
-                <input type="tel" id="telefono" placeholder="Número de teléfono" required pattern="\d{10}">
-                <button type="submit" class="btn">Registrarse</button>
-            </form>
-        </div>
-    </section>
+   <!-- Formulario de Registro -->
+<form id="formRegistro">
+    <label for="usuario">Nombre de usuario:</label>
+    <input type="text" id="usuario" required>
+    
+    <label for="email">Correo electrónico:</label>
+    <input type="email" id="email" required>
+    
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" required>
+    
+    <label for="pais">País:</label>
+    <input type="text" id="pais" required>
+    
+    <label for="ciudad">Ciudad:</label>
+    <input type="text" id="ciudad" required>
+    
+    <label for="telefono">Número de teléfono (10 dígitos):</label>
+    <input type="text" id="telefono" pattern="[0-9]{10}" required>
 
-    <script>
-        document.getElementById("registroForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            const usuario = document.getElementById("usuario").value;
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-            const pais = document.getElementById("pais").value;
-            const ciudad = document.getElementById("ciudad").value;
-            const telefono = document.getElementById("telefono").value;
+    <button type="submit" onclick="registrarUsuario(event)">Registrar</button>
+</form>
 
-            // Guardamos los datos en el localStorage
-            localStorage.setItem("usuario", usuario);
-            localStorage.setItem("email", email);
-            localStorage.setItem("password", password);
-            localStorage.setItem("pais", pais);
-            localStorage.setItem("ciudad", ciudad);
-            localStorage.setItem("telefono", telefono);
+<script>
+    function registrarUsuario(event) {
+        event.preventDefault(); // Evita el comportamiento por defecto del formulario (recargar la página)
 
-            alert("¡Registro exitoso!");
-            window.location.href = "index.html"; // Redirige a la página de login
-        });
-    </script>
+        // Obtener los valores del formulario
+        const usuario = document.getElementById('usuario').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const pais = document.getElementById('pais').value;
+        const ciudad = document.getElementById('ciudad').value;
+        const telefono = document.getElementById('telefono').value;
+
+        // Almacenar los datos en localStorage
+        localStorage.setItem('usuario', usuario);
+        localStorage.setItem('email', email);
+        localStorage.setItem('password', password);
+        localStorage.setItem('pais', pais);
+        localStorage.setItem('ciudad', ciudad);
+        localStorage.setItem('telefono', telefono);
+
+        // Redirigir al perfil después del registro
+        window.location.href = "index.html";
+    }
+</script>
+
 </body>
 </html>

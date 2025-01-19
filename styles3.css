@@ -8,7 +8,7 @@
 /* Fondo de la página */
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #6e7f9d, #4e5d77);
+    background: linear-gradient(135deg, #6e7f9d, #4e5d77); /* Fondo degradado */
     color: #fff;
     display: flex;
     justify-content: center;
@@ -19,14 +19,17 @@ body {
 }
 
 /* Contenedor del formulario */
-.form-container {
+#formRegistro {
     width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.7);
+    max-width: 400px; /* Ancho reducido para el formulario */
+    padding: 30px; /* Reducido el padding para compactar la altura */
+    border-radius: 20px; /* Bordes redondeados */
+    background: rgba(0, 0, 0, 0.7); /* Fondo más transparente */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     animation: fadeIn 1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 /* Animación de entrada */
@@ -42,10 +45,16 @@ body {
 }
 
 /* Títulos */
+h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 10px; /* Reducido el margen para que ocupe menos espacio */
+}
+
 h2 {
     text-align: center;
-    font-size: 2rem;
-    margin-bottom: 20px;
+    font-size: 1.8rem; /* Ajustado tamaño de título */
+    margin-bottom: 20px; /* Ajustado el margen inferior */
     color: #fff;
     text-transform: uppercase;
 }
@@ -53,13 +62,13 @@ h2 {
 /* Estilo de los campos del formulario */
 input {
     width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 30px;
+    padding: 12px; /* Reducido el padding para que los campos no sean tan altos */
+    margin: 8px 0; /* Ajustado el margen para no dar tanto espacio */
+    border-radius: 25px; /* Bordes más redondeados */
     border: 1px solid #fff;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.1); /* Fondo semi-transparente */
     color: #fff;
-    font-size: 1rem;
+    font-size: 1.1rem; /* Tamaño de fuente más pequeño */
     outline: none;
     transition: all 0.3s ease;
 }
@@ -73,12 +82,12 @@ input:focus {
 /* Estilo del botón */
 button {
     width: 100%;
-    padding: 12px;
+    padding: 12px; /* Reducido padding para mantener proporción con el formulario */
     background: #00d4ff;
     color: #fff;
     border: none;
-    border-radius: 30px;
-    font-size: 1.1rem;
+    border-radius: 25px; /* Bordes más redondeados */
+    font-size: 1.1rem; /* Aumentado tamaño para facilitar la lectura */
     cursor: pointer;
     transition: background 0.3s ease;
 }
@@ -119,12 +128,26 @@ button:hover {
 
 /* Media Queries para dispositivos pequeños */
 @media (max-width: 600px) {
-    .form-container {
-        padding: 15px;
+    #formRegistro {
+        padding: 20px;
         width: 90%;
+    }
+
+    h1 {
+        font-size: 28px;
     }
 
     h2 {
         font-size: 1.6rem;
+    }
+
+    input {
+        padding: 10px;
+        font-size: 1rem;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 1rem;
     }
 }
