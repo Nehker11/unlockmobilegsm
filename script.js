@@ -74,6 +74,9 @@ function mostrarPerfil() {
 // Llamada a la función cuando la página se carga
 window.onload = function() {
     verificarSesion();  // Verifica la sesión cuando la página cargue
+
+    // Iniciar el control de inactividad
+    setInterval(checkInactivity, 10000);  // Revisa cada 10 segundos
 };
 
 // Función para manejar el inicio de sesión
@@ -111,3 +114,30 @@ document.addEventListener('DOMContentLoaded', function() {
         logoutButton.addEventListener('click', cerrarSesion);
     }
 });
+
+// Función para verificar inactividad y cerrar sesión después de 10 minutos
+let lastActivityTime = Date.now();  // Guardar el tiempo de la última actividad
+
+// Tiempo de inactividad en milisegundos (10 minutos)
+const idleTimeout = 10 * 60 * 1000;  // 10 minutos = 600,000 milisegundos
+
+// Función para verificar si el usuario está inactivo
+function checkInactivity() {
+    const currentTime = Date.now();
+    const inactivityTime = currentTime - lastActivityTime;
+
+    // Si la inactividad es mayor o igual al tiempo definido
+    if (inactivityTime >= idleTimeout) {
+        cerrarSesion();  // Cerrar sesión automáticamente
+    }
+}
+
+// Detectar actividad del usuario (clic, teclado o desplazamiento)
+window.addEventListener('mousemove', resetInactivityTimer);
+window.addEventListener('keydown', resetInactivityTimer);
+window.addEventListener('scroll', resetInactivityTimer);
+
+// Función para resetear el temporizador de inactividad
+function resetInactivityTimer() {
+    lastActivityTime = Date.now();  // Actualizar la última actividad
+}
