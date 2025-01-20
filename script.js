@@ -1,43 +1,48 @@
-// Función para redirigir a la página de Activaciones
-function redirigirActivaciones() {
-    window.location.href = "listadeactivaciones.html";  // Asegúrate de que el archivo 'listadeactivaciones.html' esté en la misma carpeta
+// Función para manejar el registro de usuario
+function registrarUsuario() {
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    // Obtener los usuarios registrados desde localStorage
+    let usuariosRegistrados = JSON.parse(localStorage.getItem('usuarios')) || [];
+
+    // Si el usuario no existe, guardar los datos del nuevo usuario
+    const nuevoUsuario = {
+        username: username,
+        email: email,
+        password: password
+    };
+
+    usuariosRegistrados.push(nuevoUsuario);
+
+    // Guardar la lista de usuarios en el localStorage
+    localStorage.setItem('usuarios', JSON.stringify(usuariosRegistrados));
+
+    // Redirigir al usuario al perfil o a la página principal
+    localStorage.setItem('loggedIn', 'true');
+    localStorage.setItem('currentUser', username);
+    window.location.href = "perfil.html"; // Redirige al perfil
 }
 
-// Función para redirigir a la página de Créditos
-function redirigirCreditos() {
-    window.location.href = "listadecreditos.html";  // Asegúrate de que el archivo 'listadecreditos.html' esté en la misma carpeta
-}
+// Función para manejar el inicio de sesión
+function iniciarSesion() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
+    const usuariosRegistrados = JSON.parse(localStorage.getItem('usuarios')) || [];
 
-// Detecta el scroll para ocultar y mostrar el encabezado
-let lastScrollTop = 0;  // Variable para almacenar la última posición del scroll
+    // Verificar si el usuario existe y si la contraseña es correcta
+    const usuarioEncontrado = usuariosRegistrados.find(usuario => usuario.username === username && usuario.password === password);
 
-// Agrega el evento de scroll cuando la página cargue
-window.addEventListener("scroll", function() {
-    let header = document.querySelector(".header");  // Selecciona el encabezado
-
-    if (!header) return;  // Si no se encuentra el encabezado, no hace nada
-
-    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;  // Posición actual del scroll
-
-    if (currentScroll > lastScrollTop) {
-        // Si el scroll es hacia abajo, ocultamos el encabezado
-        header.classList.add("hidden");
+    if (usuarioEncontrado) {
+        localStorage.setItem('loggedIn', 'true');
+        localStorage.setItem('currentUser', username);
+        window.location.href = "perfil.html"; // Redirigir al perfil
     } else {
-        // Si el scroll es hacia arriba, mostramos el encabezado
-        header.classList.remove("hidden");
+        alert('Credenciales incorrectas');
     }
-
-    // Actualiza la última posición del scroll
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    const buttons = document.querySelectorAll(".btn-buy");
-    buttons.forEach(button => {
-        button.setAttribute("target", "_blank");
-    });
-});
+}
 
 // Función para verificar si el usuario está logueado
 function verificarSesion() {
@@ -74,25 +79,7 @@ function mostrarPerfil() {
 // Llamada a la función cuando la página se carga
 window.onload = function() {
     verificarSesion();  // Verifica la sesión cuando la página cargue
-
-    // Iniciar el control de inactividad
-    setInterval(checkInactivity, 10000);  // Revisa cada 10 segundos
 };
-
-// Función para manejar el inicio de sesión
-function iniciarSesion() {
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    // Simulación de autenticación (puedes reemplazarla con una verificación real)
-    if (username === 'usuarioPrueba' && password === 'claveSegura') {
-        localStorage.setItem('loggedIn', 'true');
-        localStorage.setItem('currentUser', username);
-        window.location.href = "perfil.html"; // Redirigir al perfil
-    } else {
-        alert('Credenciales incorrectas');
-    }
-}
 
 // Función para cerrar sesión
 function cerrarSesion() {
@@ -115,29 +102,69 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Función para verificar inactividad y cerrar sesión después de 10 minutos
-let lastActivityTime = Date.now();  // Guardar el tiempo de la última actividad
+// Función para redirigir a la página de Activaciones
+function redirigirActivaciones() {
+    window.location.href = "listadeactivaciones.html";  // Asegúrate de que el archivo 'listadeactivaciones.html' esté en la misma carpeta
+}
 
-// Tiempo de inactividad en milisegundos (10 minutos)
-const idleTimeout = 10 * 60 * 1000;  // 10 minutos = 600,000 milisegundos
+// Función para redirigir a la página de Créditos
+function redirigirCreditos() {
+    window.location.href = "listadecreditos.html";  // Asegúrate de que el archivo 'listadecreditos.html' esté en la misma carpeta
+}
 
-// Función para verificar si el usuario está inactivo
-function checkInactivity() {
-    const currentTime = Date.now();
-    const inactivityTime = currentTime - lastActivityTime;
+// Detecta el scroll para ocultar y mostrar el encabezado
+let lastScrollTop = 0;  // Variable para almacenar la última posición del scroll
 
-    // Si la inactividad es mayor o igual al tiempo definido
-    if (inactivityTime >= idleTimeout) {
-        cerrarSesion();  // Cerrar sesión automáticamente
+// Agrega el evento de scroll cuando la página cargue
+window.addEventListener("scroll", function() {
+    let header = document.querySelector(".header");  // Selecciona el encabezado
+
+    if (!header) return;  // Si no se encuentra el encabezado, no hace nada
+
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;  // Posición actual del scroll
+
+    if (currentScroll > lastScrollTop) {
+        // Si el scroll es hacia abajo, ocultamos el encabezado
+        header.classList.add("hidden");
+    } else {
+        // Si el scroll es hacia arriba, mostramos el encabezado
+        header.classList.remove("hidden");
+    }
+
+    // Actualiza la última posición del scroll
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const buttons = document.querySelectorAll(".btn-buy");
+    buttons.forEach(button => {
+        button.setAttribute("target", "_blank");
+    });
+});
+
+let timer;
+let inactivityTime = 600000; // 10 minutos en milisegundos
+
+// Función para resetear el temporizador de inactividad
+function resetTimer() {
+    clearTimeout(timer);
+    timer = setTimeout(showInactivityAlert, inactivityTime);
+}
+
+// Función para mostrar la alerta de inactividad
+function showInactivityAlert() {
+    const userResponse = confirm("Su sesión se cerrará debido a inactividad. ¿Aceptar?");
+    if (userResponse) {
+        // Aquí puedes cerrar la sesión, por ejemplo, redirigiendo a una página de cierre de sesión
+        window.location.href = "index.html";  // Ajusta esto a tu lógica de cierre de sesión
     }
 }
 
-// Detectar actividad del usuario (clic, teclado o desplazamiento)
-window.addEventListener('mousemove', resetInactivityTimer);
-window.addEventListener('keydown', resetInactivityTimer);
-window.addEventListener('scroll', resetInactivityTimer);
+// Detectar actividad del usuario (clic, movimiento del mouse, etc.)
+document.onmousemove = resetTimer;
+document.onkeypress = resetTimer;
+document.onclick = resetTimer;
+document.ontouchstart = resetTimer;
 
-// Función para resetear el temporizador de inactividad
-function resetInactivityTimer() {
-    lastActivityTime = Date.now();  // Actualizar la última actividad
-}
+// Iniciar el temporizador de inactividad al cargar la página
+window.onload = resetTimer;
